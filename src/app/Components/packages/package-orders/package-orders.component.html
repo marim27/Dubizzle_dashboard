@@ -1,0 +1,31 @@
+<nav class="d-flex px-5">
+    <a class="nav-link text-dark" routerLink="/packages">Packages Home</a>
+    <a class="nav-link text-dark" routerLink="/packages/view">All Packages</a>
+    <a class="nav-link text-dark" routerLink="/packages/add">Add Package</a>
+</nav>
+
+<section class="content">
+    <div class="row m-5">
+      <div class="col-6 px-4">
+        <table class="table table-striped projects">
+          <thead>
+            <tr>
+              <th style="width: 2%">#</th>
+              <th style="width: 15%">Package Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let package of packages; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>
+                {{ package.name }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card col-6 p-4">
+        <app-package-order-chart></app-package-order-chart>
+      </div>
+    </div>
+</section>

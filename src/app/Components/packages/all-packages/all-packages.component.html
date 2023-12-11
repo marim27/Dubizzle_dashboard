@@ -1,0 +1,78 @@
+<nav class="d-flex px-5">
+  <a class="nav-link text-dark" routerLink="/packages">Packages Home</a>
+  <a class="nav-link text-dark" routerLink="/packages/view">All Packages</a>
+  <a class="nav-link text-dark" routerLink="/packages/add">Add Package</a>
+</nav>
+<section class="content">
+    <div class="card mx-5">
+      <div class="card-header">
+        <h3 class="card-title">Packages</h3>
+  
+        <div class="card-tools">
+          <button
+            type="button"
+            class="btn btn-tool"
+            data-card-widget="collapse"
+            title="Collapse"
+          >
+            <i class="fas fa-minus"></i>
+          </button>
+          <button
+            type="button"
+            class="btn btn-tool"
+            routerLink="/packages/add"
+          >
+          <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped projects">
+          <thead>
+            <tr>
+              <th style="width: 2%">#</th>
+              <th style="width: 13%">Package Name</th>
+              <th style="width: 25%">Details</th>
+              <th style="width: 10% text-center" >Price</th>
+              <th style="width: 13%">Number Of Ads</th>
+              <th style="width: 7%">Discount</th>
+              <th style="width: 30%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let package of packages , let i = index">
+              <td>{{i+1}}</td>
+              <td>
+                  {{package.name}} 
+              </td>
+              <td>
+                  {{package.details}}
+              </td>
+              <td>
+                  {{package.price}}
+              </td>
+              <td >
+                  {{package.numOfAds}} Ads
+              </td>
+              <td>
+                {{package.discount}} %
+            </td>
+              <td class="project-actions text-right">
+                <a class="btn btn-info btn-sm mx-2" (click)="edit(package._id)">
+                  <i class="fas fa-pencil-alt"> </i>
+                  Edit
+                </a>
+                <a class="btn btn-danger btn-sm" (click)="delete(package._id)">
+                  <i class="fas fa-trash"> </i>
+                  Delete
+                </a>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+      <!-- /.card-body -->
+    </div>
+  </section>
+  

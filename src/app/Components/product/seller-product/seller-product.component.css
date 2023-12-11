@@ -1,0 +1,14 @@
+.olx_color3 {
+  background-color: #e00000;
+  color: #fff;
+}
+
+.olx_color2 {
+  color: #e00000;
+}
+
+.title {
+  width: 10%;
+  height: 0.1rem !important;
+  overflow: hidden !important;
+}/*# sourceMappingURL=seller-product.component.css.map */

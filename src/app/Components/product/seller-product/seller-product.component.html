@@ -1,0 +1,80 @@
+<!-- filter by Product Status -->
+<div class="col-5 d-flex flex-row m-2">
+  <span class="p-2 form-control col-3 olx_color3">Product Status</span>
+  <select class="mb-3 form-select form-control col-5" role="button" [(ngModel)]="fiterStatus" (ngModelChange)="filterProductByStatus()" value="all">
+    <option value="all" >All</option>
+    <option value="{{pending}}">{{pending}}</option>
+    <option value="{{reject}}">{{reject}}</option>
+    <option value="{{accept}}">{{accept}}</option>
+  </select>
+</div>
+<a class=" olx_color2 m-3" role="button" (click)=" back()" style="font-weight: bolder;">Back</a>
+<a class=" olx_color2 m-3" [routerLink]="['/products/product']" style="font-weight: bolder;">All Product</a>
+<!-- display product -->
+<div class="d-flex justify-content-center">
+  <section class="content m-3 w-100">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title" style="font-weight: bolder;"><span class="text-danger">User Name : </span>{{userName}}</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped projects ">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>title</th>
+              <th>createdAt</th>
+              <th>updatedAt</th>
+              <th>condition</th>
+              <th>location</th>
+              <th>Category</th>
+              <th>Sub Category</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of singleProduct; let i=index;">
+              <td>{{i+1}}</td>
+              <td class="title">{{product.title}}</td>
+              <td>{{product.createdAt}}</td>
+              <td>{{product.updatedAt}}</td>
+              <td>{{product.condition}}</td>
+              <td>{{product.locationid}}</td>
+              <td>{{product.Categoryid}}</td>
+              <td>{{product.subCategoryID}}</td>
+              <td>
+                <form class="d-flex" #statusForm="ngForm">
+                <select  name="productStatus" role="button" class="form-control col-8" [(ngModel)]="product.productStatus" >
+                  <option value="pending">pending</option>
+                  <option value="reject">reject</option>
+                  <option value="accept">accept</option>
+                  <option value="disabled">disabled</option>
+                </select>
+                <div (click)="checkProductStatus(statusForm.value,product._id)" role="button">
+                  <i class="fa-solid fa-check text-success pt-2 mx-2" style="font-size: x-large"></i></div>
+                </form>
+              </td>
+              <td>
+                <a class="btn" (click)="showProduct(product._id)">
+                  <i class="fa-solid fa-eye text-info"></i>
+                </a>
+                <a class="btn" (click)="deleteProduct(product._id)">
+                  <i class="fas fa-trash text-danger"></i>
+                </a>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>

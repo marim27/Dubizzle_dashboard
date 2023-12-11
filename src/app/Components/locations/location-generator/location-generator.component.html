@@ -1,0 +1,27 @@
+<nav class="d-flex px-5">
+    <a class="nav-link text-dark" routerLink="/locations">ِAll Locations</a>
+    <a class="nav-link text-dark" routerLink="/locations/add">Generate Location</a>
+</nav>
+<section class="content">
+    <form class="card p-4 my-2 mx-5 shadow p-3 bg-body-tertiary rounded">
+        <div class="form-group col">
+            <label for="title" class="text-dark">Title</label>
+            <input id="title" type="text" class="form-control shadow-sm rounded" name="name" placeholder="Enter Location Name"
+                [(ngModel)]="location.title"  [(ngModel)]="upDatedlocation.title">
+            <label for="artitle" class="text-dark">Ar Title</label>
+            <input id="artitle" type="text" class="form-control shadow-sm rounded" name="arname" placeholder="Enter Location Arabic Name"
+                [(ngModel)]="location.artitle"  [(ngModel)]="upDatedlocation.artitle">
+            <div class="upload_field">
+                <label for="title" class="text-dark">Image</label>
+                <input id="image" class="form-control wpcf7-form-control wpcf7-file border-0" type="file"  name="image" (change)="onImageSelected($event)"  [(ngModel)]="location.image"  [(ngModel)]="upDatedlocation.image">
+            </div>
+        </div>
+
+        <div class="text-center my-2">
+            <button [hidden]="this.title" class="btn btn-red shadow rounded" style="width:150px;"
+                (click)="addLocation()">Add</button>
+            <button [hidden]="!this.title" class="btn btn-red shadow rounded" style="width:150px;"
+                (click)="editLocation()">Edit</button>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,35 @@
+<section class="content  ">
+    <span [routerLink]="['/subcategories']"  [queryParams]="isEdit?{ parent: updateSubCategory.CategoryID._id }:{ parent: parentCategory._id }" style="color:#e00000" class="mx-4" role="button">Back</span>
+    <form class="card p-4 my-2 mx-4 shadow p-3 bg-body-tertiary rounded">
+
+        <div class="form-group col">
+           <label for="discount" class="text-dark">SubCategory Name</label>
+          <input type="text" class="form-control shadow-sm rounded" name="subCategoryName" placeholder="Enter subCategory Name "[(ngModel)]="subCategory.title" [(ngModel)]="updateSubCategory.title">
+        </div>
+        <div class="form-group col">
+           <label for="discount" class="text-dark">SubCategory Arabic Name</label>
+          <input type="text" class="form-control shadow-sm rounded" name="ArsubCategoryName" placeholder="Enter subCategory Arabic Name "[(ngModel)]="subCategory.artitle" [(ngModel)]="updateSubCategory.artitle">
+        </div>
+
+        <!-- Show In Add  -->
+        <div class="form-group col" [hidden]="isEdit">
+            <div class="form-group col">
+              <label for="discount" class="text-dark">SubCategory Parent</label>
+              <!-- <input type="text" class="form-control shadow-sm rounded" name="subCategoryParentID" [value]="parentCategory.name" [disabled]="true" [(ngModel)]="parentCategory.CategoryID"> -->
+              <input type="text" class="form-control shadow-sm rounded" name="subCategoryParentID" [value]="parentCategory.name" [(ngModel)]="updateSubCategory.CategoryID" [hidden]="isEdit"  [disabled]="true">
+            </div>
+        </div>
+
+        <!-- Show In Edit  -->
+        <div class="form-group col" *ngIf="isEdit">
+            <label for="discount" class="text-dark">SubCategory Parent</label>
+            <!-- Should add ? Error in Consol -->
+            <input type="text" class="form-control shadow-sm rounded"   [value]="categryName" [disabled]="true" >
+        </div>
+
+        <div class="text-center my-2">
+        <button [hidden]="this.isEdit" class="btn btn-red shadow rounded" style="width:150px;" (click)="addSubCategory()">Add</button>
+        <button [hidden]="!this.isEdit" class="btn btn-red shadow rounded" style="width:150px;" (click)="editSubCategory()">Edit</button>
+        </div>
+      </form>
+</section>

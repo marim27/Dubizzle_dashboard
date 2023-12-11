@@ -1,0 +1,104 @@
+<a class=" olx_color2 m-3" role="button" (click)=" back()" style="font-weight: bolder;">Back</a>
+<a class=" olx_color2 m-3" [routerLink]="['/products/product']" style="font-weight: bolder;">All Product</a>
+<div class="wrapper">
+  <div class="content mx-5">
+    <section class="content-header">
+      <div class="col-sm-6 text-center">
+        <h1>{{singleProduct?.title}}</h1>
+      </div>
+    </section>
+    <section class="content">
+      <div class="card card-solid">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <div class="col-10">
+                <!-- <img src="assets/img/prod-2.jpg" class="product-image w-100"alt="Product Image"> -->
+                <img src="{{imagePath+'/'+singleProduct!.images[0]}}" alt="" style="width: 1rem;" class="product-image w-100"
+                alt="{{singleProduct?.title}}">
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <div class="py-2 px-3 mt-4 border-bottom">
+                <h6 class="mb-0 d-flex" (click)="showSellerProduct(singleProduct!.sellerid._id)" role="button">
+                  <i class="fa-solid fa-user text-danger"> </i> <p class="font mx-2"> User Name : </p>{{singleProduct?.sellerid.username}}
+                </h6>
+              </div>
+              <div class="py-2 px-3 mt-4 border-bottom">
+                <h6 class="mb-0 d-flex">
+                  <i class="fa-solid fa-calendar-days text-danger"></i>
+                  <p class="font mx-2"> Created Date : </p>
+                  {{singleProduct?.createdAt}}
+                </h6>
+              </div>
+              <div class="py-2 px-3 mt-4 border-bottom">
+                <h6 class="mb-0 d-flex">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-danger"> </i>
+                  <p class="font mx-2"> condition : </p>
+                  {{singleProduct?.condition}}
+                </h6>
+              </div>
+              <div class="py-2 px-3 mt-4 border-bottom">
+                <h6 class="mb-0 d-flex">
+                  <!-- <i class="fa-solid fa-sitemap text-danger"> </i> -->
+                  <img src="{{imagePath+'/'+singleProduct?.Categoryid.image}}" alt="" style="width: 1rem;" class="mb-3">
+                  <p class="font mx-2"> Category : </p>
+                  {{singleProduct?.Categoryid.name}}
+                </h6>
+              </div>
+              <div class="py-2 px-3 mt-4 border-bottom">
+                <h6 class="mb-0 d-flex"> <i class="fa-solid fa-code-fork text-danger"> </i>
+                 <p class="font mx-2"> Sub Category : </p> {{singleProduct?.subCategoryID.title}}
+                </h6>
+              </div>
+              <div class="py-2 px-3 mt-4 border-bottom">
+                <h6 class="mb-0 d-flex">
+                  <i class="fa-solid fa-award text-danger"> </i>  <p class="font mx-2"> Price : </p> {{singleProduct?.price}}
+                  {{singleProduct?.currency}}
+                </h6>
+              </div>
+              <div class="py-2 px-3 mt-4 border-bottom">
+                <h6 class="mb-0 d-flex">
+                  <i class="fa-solid fa-location-dot text-danger"> </i> <p class="font mx-2"> Location : </p>
+                  {{singleProduct?.locationid.title}}
+                </h6>
+              </div>
+
+              <div class="border-bottom d-flex py-4">
+                <form class="d-flex" #statusForm="ngForm">
+                  <select  name="productStatus" class="form-control col-10" role="button">
+                    <option value="pending">pending</option>
+                    <option value="reject">reject</option>
+                    <option value="accept">accept</option>
+                    <option value="disabled">disabled</option>
+                  </select>
+                  <div (click)="checkProductStatus(statusForm.value,singleProduct?._id)" role="button">
+                    <i class="fa-solid fa-check text-danger pt-2 mx-2" style="font-size: x-large"></i></div>
+                  </form>
+              </div>
+              <div class="border-bottom d-flex">
+                <a class="btn" (click)="deleteProduct(singleProduct?._id)">
+                  <i class="fas fa-trash text-danger p-2"
+                    style="font-size:xx-large;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <nav class="w-100">
+              <div class="nav nav-tabs" id="product-tab" role="tablist">
+                <a class="nav-item nav-link active" id="product-desc-tab"
+                  data-toggle="tab" href="#product-desc" role="tab"
+                  aria-controls="product-desc" aria-selected="true">Description</a>
+              </div>
+            </nav>
+            <div class="tab-content p-3" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="product-desc"
+                role="tabpanel" aria-labelledby="product-desc-tab">{{singleProduct?.description}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>

@@ -1,0 +1,69 @@
+<!--   category search input-->
+<div class=" d-flex justify-content-center ">
+  <div class="input-group mx-3 w-100">
+    <span class="input-group-text btn-red" id="basic-addon1" (click)="showHideInputSearch()">
+      <i class="fa-solid fa-magnifying-glass"></i></span>
+    <input type="search" class="form-control" placeholder="Type category here" aria-label="search"
+      aria-describedby="basic-addon1" [(ngModel)]="listFillterCategory" *ngIf="showInput">
+  </div>
+</div>
+<!-- category table -->
+<div class=" d-flex justify-content-center">
+  <section class="content m-3 w-100">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Categories</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-tool" (click)="addNewCategory()">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-striped projects">
+          <thead>
+            <tr>
+              <th>
+                #
+              </th>
+              <th>
+                image
+              </th>
+              <th>
+                Name
+              </th>
+              <th>createdAt</th>
+              <th>updatedAt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cat of filteredCategories; let i=index">
+              <td>
+                {{i+1}}
+              </td>
+              <td><img src="{{imagePath+'/'+cat.image}}" [alt]="cat.name" style="width: 2rem; height: 2rem;"></td>
+              <td [routerLink]="['/subcategories']" [queryParams]="{ parent: cat._id }" role="button" class="text-dark">
+                {{cat.name}}
+              </td>
+              <td>{{cat.createdAt}}</td>
+              <td>{{cat.updatedAt}}</td>
+              <td class="project-actions text-right">
+                <a class="btn btn-info btn-sm m-2" (click)="editCategory(cat._id)">
+                  <i class="fas fa-pencil-alt"></i>
+                  Edit
+                </a>
+                <a class="btn btn-danger btn-sm" (click)="deleteCategory(cat._id)">
+                  <i class="fas fa-trash"></i>
+                  Delete
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>

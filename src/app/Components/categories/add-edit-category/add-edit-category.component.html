@@ -1,0 +1,34 @@
+<a class=" olx_color2 m-3" [routerLink]="['/Categories/Categories']">Back</a>
+<form class="m-3 shadow card"  [formGroup]="categoryForm" enctype="multipart/categoryForm">
+  <div class="card-body">
+    <div class="form-group">
+      <label for="inputName">category Name</label>
+      <input type="text" id="inputName" class="form-control" name="name" [value]="updateCategory.name"
+     [(ngModel)]="newCategory.name" formControlName="name"
+     [ngClass]="{'is-invaild':(name?.untouched)}">
+    </div>
+    <div class="form-group">
+      <label for="inputNamear">category AR Name</label>
+      <input type="text" id="inputNamear" class="form-control" name="arname" [value]="updateCategory.arname"
+     [(ngModel)]="newCategory.arname" formControlName="arname"
+     [ngClass]="{'is-invaild':(arname?.untouched)}">
+    </div>
+    <div class="upload_field">
+      <label for="inputImage">image</label>
+      <input type="file" id="inputImage" class="form-control wpcf7-form-control wpcf7-file border-0"
+       name="image" [value]="updateCategory.image"
+     [(ngModel)]="newCategory.image" formControlName="image"
+     [ngClass]="{'is-invaild':(image?.untouched)}"  (change)="onImageSelected($event)">
+
+    </div>
+    <div class="d-flex">
+      <div class="col-12 text-center">
+        <input type="submit" value="Save Changes" class="btn olx_color " [disabled]="categoryForm.invalid"
+         (click)="addNewCategory(categoryForm.value)" *ngIf="!newCategory._id">
+        <input type="submit" value="Update" class="btn olx_color"
+        (click)="editCategory(categoryForm.value,newCategory._id)" *ngIf="newCategory._id">
+      </div>
+    </div>
+  </div>
+</form>
+

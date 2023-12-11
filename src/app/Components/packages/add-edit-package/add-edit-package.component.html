@@ -1,0 +1,68 @@
+<nav class="d-flex px-5">
+  <a class="nav-link text-dark" routerLink="/packages">Packages Home</a>
+  <a class="nav-link text-dark" routerLink="/packages/view">All Packages</a>
+  <a class="nav-link text-dark" routerLink="/packages/add">Add Package</a>
+</nav>
+<section class="content">
+    <form class="card p-4 my-2 mx-5 shadow p-3 bg-body-tertiary rounded">
+        <div class="form-group col">
+          <label for="name" class="text-dark">Name</label>
+          <input type="text" class="form-control shadow-sm rounded" id="name" name="name" placeholder="Enter Package Name" [(ngModel)]="package.name">
+        </div>
+        <div class="form-group col">
+          <label for="arName" class="text-dark">AR Name</label>
+          <input type="text" class="form-control shadow-sm rounded" id="arName" name="arName" placeholder="Enter Package AR Name" [(ngModel)]="package.arName">
+        </div>
+        <div class="form-group col">
+          <label for="numOfAds" class="text-dark">Number of Ads</label>
+          <input type="number" class="form-control shadow-sm rounded" name="numOfAds" id="numOfAds" placeholder="Enter Number Of Ads" [(ngModel)]="package.numOfAds">
+        </div>
+        <div class="form-group col">
+          <label for="price" class="text-dark">Price</label>
+          <div class="form-control d-flex p-0 btn-red shadow-sm rounded">
+              <span class="text-center p-2" style="width: 60px;">EGP</span>
+            <input type="number" class="form-control border-0 " id="price" name="price" placeholder="Enter Package Price" [(ngModel)]="package.price">
+          </div>
+        </div>
+       <div class="upload_field">
+            <label for="title" class="text-dark">Image</label>
+            <input id="image" class="form-control wpcf7-form-control wpcf7-file border-0" type="file"  name="image" (change)="onImageSelected($event)"  [(ngModel)]="package.image"  [(ngModel)]="upDatedpackage.image" >
+        </div>
+        <div class="form-group col">
+          <label for="discount" class="text-dark">Discount</label>
+          <input type="number" class="form-control shadow-sm rounded" name="discount" id="discount" placeholder="Enter Product Discount" [(ngModel)]="package.discount">
+        </div>
+          <div class="form-group col">
+          <label for="arName" class="text-dark">Expiry Days</label>
+          <input type="text" class="form-control shadow-sm rounded" id="arName" name="expiryDays" placeholder="Enter Package Expiry Days" [(ngModel)]="package.expiryDays">
+        </div>
+          <div class="form-group col">
+          <label for="AdsDays" class="text-dark">Title AdsDays Details</label>
+          <input type="text" class="form-control shadow-sm rounded" id="AdsDays" name="TitleadsDaysDetails" placeholder="Enter Package Title AdsDays Details" [(ngModel)]="package.TitleadsDaysDetails">
+        </div>
+          <div class="form-group col">
+          <label for="arAdsDays" class="text-dark">AR Title AdsDays Details</label>
+          <input type="text" class="form-control shadow-sm rounded" id="arAdsDays" name="arTitleadsDaysDetails" placeholder="Enter AR Package Title AdsDays Details" [(ngModel)]="package.arTitleadsDaysDetails">
+        </div>
+          <div class="form-group col">
+          <label for="Details" class="text-dark">AdsDays Details</label>
+          <input type="text" class="form-control shadow-sm rounded" id="Details" name="adsDaysDetails" placeholder="Enter Package AdsDays Details" [(ngModel)]="package.adsDaysDetails">
+        </div>
+          <div class="form-group col">
+          <label for="arDetails" class="text-dark">AR AdsDays Details</label>
+          <input type="text" class="form-control shadow-sm rounded" id="arDetails" name="aradsDaysDetails" placeholder="Enter AR Package AdsDays Details" [(ngModel)]="package.aradsDaysDetails">
+        </div>
+        <div class="form-group col">
+          <label for="details" class="text-dark">Details</label>
+          <textarea class="form-control shadow-sm rounded" id="details" rows="4" placeholder="Enter Package Details" name="details" [(ngModel)]="package.details"></textarea>
+        </div>
+        <div class="form-group col">
+          <label for="arDetails" class="text-dark">AR Details</label>
+          <textarea class="form-control shadow-sm rounded" id="arDetails" rows="4" placeholder="Enter Package AR Details" name="arDetails" [(ngModel)]="package.arDetails"></textarea>
+        </div>
+        <div class="text-center my-2">
+        <button [hidden]="this.title" class="btn btn-red shadow rounded" style="width:150px;" (click)="addPackage()">Add</button>
+        <button [hidden]="!this.title" class="btn btn-red shadow rounded" style="width:150px;" (click)="editPackage()">Edit</button>
+        </div>
+      </form>
+</section>
